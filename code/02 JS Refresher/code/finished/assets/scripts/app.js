@@ -1,156 +1,138 @@
-// import { apiKey } from "./util.js";
-
-// import apiKey from "./util.js";
-// import { apiKey, abc as content } from "./util.js";
+// import { apiKey, abc } from "./util.js"; // import the variable
+// import { apiKey, abc as content} from "./util.js"; // use as to add alias
+// import apiKey from "./util.js"; // use with export default
+// console.log(apiKey);
 // import * as util from "./util.js";
-
 // console.log(util.apiKey);
 // console.log(content);
 
-// const userMessage = "Hello World!!!";
+// let userMessage = "Hello world!";
+// const userMessage = "Hello world!"; // must not be re-assigned
 
 // console.log(userMessage);
 // console.log(userMessage);
 
-// function createGreeting(userName, message = "Hello!") {
-// console.log(userName);
-// console.log(message);
-//   return "Hi, I am " + userName + ". " + message;
+// console.log(10/5);
+// console.log(10+5);
+
+// console.log("Hello" + " " + "World");
+// if ( 10 === 10) { // triple =
+//     console.log("works");
 // }
 
-// const greeting1 = createGreeting("Max");
-// console.log(greeting1);
+/*
+function greet(userName, message = "Hello") { // default
+    console.log(userName);
+    console.log(message);
 
-// const greeting2 = createGreeting("Manuel", "Hello, what's up?");
-// console.log(greeting2);
+    return "Hi, I am" + userName + ". " + message;
+}
 
-// export default (userName, message) => {
-//  console.log("Hello");
-//   return userName + message;
-// };
+greeting1 = greet("Max")); // calling or invoking a function
+greeting2 = greet("Manuel", "Hello, what's up?");
 
-// const user = {
-//   name: "Max",
-//   age: 34,
-//   greet() {
-//     console.log("Hello!");
-//     console.log(this.age);
-//   }
-// };
+console.log(greeting1);
+console.log(greeting2);
+*/
+// anonymous functions ( no name )
+// export default function() {}
+/*
+export default (userName, message) => {
+    return userName + " " + message;
+}
+*/
 
-// console.log(user.name);
-// user.greet();
+// if you ave exactly 1 parameter, you can omit the ()
+// if your function just returns "return" can be omitted
+// number => { number * 3 };
+// number => {number > 3 ? number : 3 };
 
-// class User {
-//   constructor(name, age) {
-//     this.name = name;
-//     this.age = age;
-//   }
+/*
+const user = {
+    name : "Max",
+    age:  34,
+    greet() {
+        console.log("Hello!");
+        console.log(this.name);
+    }
+}
+user.greet();
 
-//   greet() {
-//     console.log("Hi!");
-//   }
-// }
+class User {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    greet() {
+        console.log("Hi!");
+    }
+}
 
-// const user1 = new User("Manuel", 35);
-// console.log(user1);
-// user1.greet();
+let user1 = new User("Manuel", 20);
+user1.greet();
+*/
 
-// const hobbies = ["Sports", "Cooking", "Reading"];
-// console.log(hobbies[0]);
-
-// hobbies.push("Working");
-// console.log(hobbies);
-
-// const index = hobbies.findIndex((item) => item === "Sports");
-
-// console.log(index);
-
-// const editedHobbies = hobbies.map((item) => ({ text: item }));
-// console.log(editedHobbies);
-
-// const [firstName, lastName] = ["Max", "Schwarzmüller"];
-
-// const firstName = userNameData[0];
-// const lastName = userNameData[1];
-
-// console.log(firstName);
-// console.log(lastName);
-
-// const { name: userName, age } = {
-//   name: "Max",
-//   age: 34
-// };
-
-// console.log(userName);
-// console.log(age);
-
-// const name = user.name;
-// const age = user.age;
-
-// const hobbies = ["Sports", "Cooking"];
-// const user = {
-//   name: "Max",
-//   age: 34
-// };
-
-// const newHobbies = ["Reading"];
-
-// const mergedHobbies = [...hobbies, ...newHobbies];
-// console.log(mergedHobbies);
-
-// const extendedUser = {
-//   isAdmin: true,
-//   ...user
-// };
-// console.log(extendedUser);
-
-// const password = prompt("Your password");
-
-// if (password === "Hello") {
-//   console.log("Hello works");
-// } else if (password === "hello") {
-//   console.log("hello works");
-// } else {
-//   console.log("Access not granted.");
-// }
-
-// const hobbies = ["Sports", "Cooking"];
-
-// for (const hobby of hobbies) {
-//   console.log(hobby);
-// }
-
-// const list = document.querySelector("ul");
-// list.remove();
-
-// function handleTimeout() {
-//   console.log("Timed out!");
-// }
-
-// const handleTimeout2 = () => {
-//   console.log("Timed out ... again!");
-// };
-
-// setTimeout(handleTimeout, 2000);
-// setTimeout(handleTimeout2, 3000);
-// setTimeout(() => {
-//   console.log("More timing out...");
-// }, 4000);
-
-// function init() {
-//   function greet() {
-//     console.log(“Hi!“);
-//   }
-
-//   greet();
-// }
-
-// init();
-
-// const message = “Hello”;
-
+/*
 const hobbies = ["Sports", "Cooking"];
-// hobbies = [];
-hobbies.push("Working");
+console.log(hobbies[0]);
+
+hobbies.push("Working out");
 console.log(hobbies);
+
+const index = hobbies.findIndex(item => item === 'Sports');
+console.log(index);
+
+let lowercaseHobbies = hobbies.map((item)=> {return item.toLowerCase()});
+console.log(lowercaseHobbies);
+*/
+
+// const [firstName, lastName] = ["Vjera", "Turk"];
+
+/*
+const { name : userName, age }  = {
+    name: "Max",
+    age: 34
+}
+console.log(userName);
+*/
+
+// Spread operator
+// const newHobbies = ["Reading"];
+// const mergeHobbies  = [ ...hobbies, ...newHobbies];
+/*
+const extendedUser = {
+    isAdmin  : true,
+    ...user
+}
+*/
+/*
+const password  = prompt('Your password');
+for ( const hobby of hobbies) {
+    console.log(hobby);
+}
+*/
+
+/*
+function handleTimeout() {
+    console.log("Timed out!")
+}
+
+function handleTimeout2() {
+    console.log("Timed out...again!")
+}
+
+
+setTimeout(handleTimeout, 2000)
+setTimeout(handleTimeout2, 3000)
+setTimeout(()=>{
+    console.log("More timng out ...")
+}, 4000)
+*/
+
+/*
+function greeter(greetFn){
+    greetFn()
+}
+
+greeter(() => console.log("Hi"))
+*/

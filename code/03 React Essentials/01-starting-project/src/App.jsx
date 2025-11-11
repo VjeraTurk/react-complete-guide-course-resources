@@ -2,7 +2,9 @@
 import { useState } from 'react';
 
 import componentsImg from './assets/components.png'
-import { CORE_CONCEPTS } from './data.js';
+
+import { CORE_CONCEPTS, EXAMPLES }from './data-with-examples.js'
+
 import Header from './components/Header/Header.jsx'
 import CoreConcept from './components/CoreConcept/CoreConcept.jsx';
 import TabButton from './components/TabButton.jsx';
@@ -14,7 +16,7 @@ function App() {
   // 2. they must not be called in nested code statements ( e.g. inside of an if-statement, a loop)
 
   //    current state value, state updating function  initial state value
-  const [selectedTopic, setSelectedTopic] = useState("Please click a button!"); // revalueate the state
+  const [selectedTopic, setSelectedTopic] = useState('components'); // re-evaluate the state
 
   function handleSelect(selectedButton) {
     setSelectedTopic(selectedButton);
@@ -48,15 +50,20 @@ function App() {
           <h2>Examples</h2>
           <menu>
             <TabButton
-              onSelect={() => handleSelect('Components')}>
+              onSelect={() => handleSelect('components')}>
               {/* this here is children, the content of the component */}
                 Components
             </TabButton>
-            <TabButton onSelect={() => handleSelect('JSX')}>JSX</TabButton>
-            <TabButton onSelect={() => handleSelect('Props')}>Props</TabButton>
-            <TabButton onSelect={() => handleSelect('States')}>States</TabButton>
+            <TabButton onSelect={() => handleSelect('jsx')}>JSX</TabButton>
+            <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
+            <TabButton onSelect={() => handleSelect('state')}>States</TabButton>
           </menu>
-         {selectedTopic}
+         <div id="tab-content"></div>
+          <h3>{EXAMPLES[selectedTopic].title}</h3>
+          <p>{EXAMPLES[selectedTopic].description}</p>
+          <pre>
+            <code>{EXAMPLES[selectedTopic].code}</code>
+          </pre>
         </section>
       </main>
     </div>

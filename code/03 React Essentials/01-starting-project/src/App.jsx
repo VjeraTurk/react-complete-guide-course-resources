@@ -16,7 +16,7 @@ function App() {
   // 2. they must not be called in nested code statements ( e.g. inside of an if-statement, a loop)
 
   //    current state value, state updating function  initial state value
-  const [selectedTopic, setSelectedTopic] = useState('components'); // re-evaluate the state
+  const [selectedTopic, setSelectedTopic] = useState(); // re-evaluate the state
 
   function handleSelect(selectedButton) {
     setSelectedTopic(selectedButton);
@@ -58,12 +58,15 @@ function App() {
             <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
             <TabButton onSelect={() => handleSelect('state')}>States</TabButton>
           </menu>
-         <div id="tab-content"></div>
+          {!selectedTopic ? <p>Please select a topic.</p> :
+         ( <div id="tab-content">
           <h3>{EXAMPLES[selectedTopic].title}</h3>
           <p>{EXAMPLES[selectedTopic].description}</p>
           <pre>
             <code>{EXAMPLES[selectedTopic].code}</code>
           </pre>
+          </div>
+          )}
         </section>
       </main>
     </div>

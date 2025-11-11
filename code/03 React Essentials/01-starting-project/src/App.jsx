@@ -22,5 +22,5 @@ function App() {
     </div>
   );
 }
-
+// must be exported - index.js imports it
 export default App;

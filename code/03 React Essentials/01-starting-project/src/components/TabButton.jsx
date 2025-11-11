@@ -1,5 +1,5 @@
 /* starting with on makes it clear that this prop is a function */
-export default function TabButton({children, onSelect, isSelected}) {
+export default function TabButton({children, isSelected, ...props}) {
 
     // inner function
     // function handleClick() {
@@ -13,7 +13,7 @@ export default function TabButton({children, onSelect, isSelected}) {
     return (
         <li>
             {/*do not invoke the function, just use the functionname*/}
-            <button className={isSelected? 'active':  undefined} onClick={onSelect} >{children}</button>
+            <button className={isSelected? 'active':  undefined} {...props} >{children}</button>
         </li>
     );
 }

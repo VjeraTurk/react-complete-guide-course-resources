@@ -16,8 +16,6 @@ function App() {
   //    current state value, state updating function  initial state value
   const [selectedTopic, setSelectedTopic] = useState("Please click a button!"); // revalueate the state
 
-  let tabContent = "Please click a button!"
-
   function handleSelect(selectedButton) {
     setSelectedTopic(selectedButton);
     // console.log(selectedTopic) keep in mind this is an old topic!

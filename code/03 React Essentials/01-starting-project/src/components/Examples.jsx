@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
-import TabButton from './TabButton.jsx'
-import Section from './Section.jsx'
+import TabButton from './TabButton.jsx';
+import Section from './Section.jsx';
+import Tabs from './Tabs.jsx';
 
-import { EXAMPLES } from '../data-with-examples.js'
+import { EXAMPLES } from '../data-with-examples.js';
 
 export default function Examples(){
      // 2 important things about calling React hooks
@@ -32,18 +33,20 @@ export default function Examples(){
     return (
         <Section id="examples">
           <h2>Examples</h2>
-          <menu>
-            <TabButton
-            isSelected = {selectedTopic == 'components'}
-            onClick={() => handleSelect('components')}>
-              {/* this here is children, the content of the component */}
-                Components
-            </TabButton>
-            <TabButton isSelected = {selectedTopic == 'jsx'} onClick={() => handleSelect('jsx')}>JSX</TabButton>
-            <TabButton isSelected = {selectedTopic == 'props'} onClick={() => handleSelect('props')}>Props</TabButton>
-            <TabButton isSelected = {selectedTopic == 'state'} onClick={() => handleSelect('state')}>States</TabButton>
-          </menu>
+          <Tabs
+            buttons={
+              <>
+                <TabButton isSelected = {selectedTopic == 'components'} onClick={() => handleSelect('components')}>Components</TabButton>
+                <TabButton isSelected = {selectedTopic == 'jsx'} onClick={() => handleSelect('jsx')}>JSX</TabButton>
+                <TabButton isSelected = {selectedTopic == 'props'} onClick={() => handleSelect('props')}>Props</TabButton>
+                <TabButton isSelected = {selectedTopic == 'state'} onClick={() => handleSelect('state')}>States</TabButton>
+              </>
+            }
+          >
+          {/* this here is children, the content of the component */}
           {tabContent}
+          </Tabs>
+
         </Section>
     );
 }

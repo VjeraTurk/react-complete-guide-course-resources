@@ -7,6 +7,9 @@ export default function TabButton({children, onSelect}) {
     // }
     // document.querySelector('button').addEventListener('click', () =>{})
 
+  // by default it executes only once
+  console.log('BUTTON COMPONENT EXECUTING')
+
     return (
         <li>
             {/*do not invoke the function, just use the functionname*/}

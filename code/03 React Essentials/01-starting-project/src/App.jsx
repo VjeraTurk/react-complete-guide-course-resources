@@ -1,3 +1,6 @@
+// React hooks
+import { useState } from 'react';
+
 import componentsImg from './assets/components.png'
 import { CORE_CONCEPTS } from './data.js';
 import Header from './components/Header/Header.jsx'
@@ -6,10 +9,22 @@ import TabButton from './components/TabButton.jsx';
 
 function App() {
 
+  // 2 important things about calling React hooks
+  // 1, they must not be called outside of React component function
+  // 2. they must not be called in nested code statements ( e.g. inside of an if-statement, a loop)
+
+  //    current state value, state updating function  initial state value
+  const [selectedTopic, setSelectedTopic] = useState("Please click a button!"); // revalueate the state
+
+  let tabContent = "Please click a button!"
+
   function handleSelect(selectedButton) {
-    console.log(selectedButton)
+    setSelectedTopic(selectedButton);
+    // console.log(selectedTopic) keep in mind this is an old topic!
   }
 
+  // by default it executes only once
+  console.log('APP COMPONENT EXECUTING')
   return (
     <div>
       <Header/>
@@ -34,15 +49,16 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton>
+            <TabButton
+              onSelect={() => handleSelect('Components')}>
               {/* this here is children, the content of the component */}
-              Components
+                Components
             </TabButton>
             <TabButton onSelect={() => handleSelect('JSX')}>JSX</TabButton>
             <TabButton onSelect={() => handleSelect('Props')}>Props</TabButton>
             <TabButton onSelect={() => handleSelect('States')}>States</TabButton>
           </menu>
-          Dynamic content
+         {selectedTopic}
         </section>
       </main>
     </div>

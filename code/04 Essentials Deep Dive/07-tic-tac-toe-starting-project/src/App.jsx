@@ -7,7 +7,11 @@ import GameOver from "./components/GameOver.jsx"
 
 import { WINNING_COMBINATIONS } from './winning-combinations.js'
 
-const initialGameBoard = [
+const PLAYERS = {
+  X : 'Player 1',
+  O : 'Player 2'
+}
+const INITIAL_GAME_BOARD = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
@@ -31,9 +35,13 @@ function App() {
   // Lift the state from Game Board to App
   // const [activePlayer, setActivePlayer] = useState('X')
 
+  const [players, setPlayers] = useState({
+    'X' : 'Player 1',
+    'O' : 'Player 2'
+  })
   const [gameTurns, setGameTurns] = useState([]);
 
-  let gameBoard = [...initialGameBoard.map(array=>[...array])];
+  let gameBoard = [...INITIAL_GAME_BOARD.map(array=>[...array])];
 
   const activePlayer =  deriveActivePlayer(gameTurns)
 
@@ -56,7 +64,7 @@ function App() {
     if(firstSquareSymbol
       && firstSquareSymbol === secondSquareSymbol
       && firstSquareSymbol === thirdSquareSymbol){
-        winner = firstSquareSymbol;
+        winner = players[firstSquareSymbol];
       }
 
   }
@@ -77,12 +85,22 @@ function App() {
     setGameTurns([]);
   }
 
+  function handlePlayerNameChange(symbol, newName) {
+    setPlayers(prevPlayers => {
+      return {
+        ...prevPlayers,
+        // overwrite just the changed player name
+        [symbol] : newName
+      };
+    });
+  }
+
   return (
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player initialName="Player 1" symbol="X" isActive={activePlayer === "X"}></Player>
-          <Player initialName="Player 2" symbol="O" isActive={activePlayer === "O"}></Player>
+          <Player initialName={PLAYERS.X} symbol="X" isActive={activePlayer === "X"} onChangeName={handlePlayerNameChange}></Player>
+          <Player initialName={PLAYERS.O} symbol="O" isActive={activePlayer === "O"} onChangeName={handlePlayerNameChange}></Player>
         </ol>
         { (winner || hasDraw) && <GameOver winner={winner} onRestart={handleRestart}></GameOver>}
         <GameBoard board = {gameBoard} onSelectSquare={handleSelectSquare} activePlayerSymbol={activePlayer}/>

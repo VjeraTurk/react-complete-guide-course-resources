@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Input from "./components/Input";
 import Results from "./components/Results";
-import {calculateInvestmentResults} from "./util/investment.js"
 
 function App() {
 

@@ -1,0 +1,48 @@
+import { useState, useRef } from 'react';
+import ResultModal from './ResultModal.jsx';
+// let timer; // shared between all instances of the component
+
+export default function TimerChallenge({title, targetTime}) {
+
+    // value will not be lost once the component re-executes
+    // and changing the value will not cause the component to re-execute
+    const timer = useRef();
+    const dialog = useRef();
+
+    const [timerStarted, setTimerStarted] = useState(false);
+    const [timerExpired, setTimerExpired] = useState(false);
+
+
+    function handleStart() {
+        timer.current = setTimeout(() => {
+            setTimerExpired(true);
+            dialog.current.showModal();
+        }, targetTime * 1000);
+
+        setTimerStarted(true);
+    }
+
+    function handleStop() {
+        clearTimeout(timer.current);
+    }
+
+    return (
+        <>
+        {timerExpired && <ResultModal ref={dialog} result="lost" targetTime={targetTime} />}
+        <section className="challenge">
+            <h2>{title}</h2>
+            <p className="challenge-time">
+                {targetTime} second{targetTime > 1 ? 's' : ''}
+            </p>
+            <p>
+                <button onClick={timerStarted ? handleStop : handleStart}
+                >{timerStarted ? 'Stop' : 'Start'} Challenge</button>
+            </p>
+            <p className={timerStarted ? 'active' : undefined}>
+                {timerStarted ? 'Time is running...' : 'Timer inactive'}
+            </p>
+        </section>
+        </>
+
+    );
+}
